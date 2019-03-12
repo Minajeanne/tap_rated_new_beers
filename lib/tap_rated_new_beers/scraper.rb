@@ -1,3 +1,4 @@
+require 'open-uri'
 class TapRatedNewBeers::Scraper
 
   def get_page
@@ -6,6 +7,7 @@ class TapRatedNewBeers::Scraper
 
     def scrape_beers
       self.get_page.css()
+      beers = []
     end
 
     def make_beers
