@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Minajeanne"]
   spec.email         = ["albrown07@mac.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = "specs for CLI Gem Project"
+  spec.description   = "specs for CLI Gem Project"
   spec.homepage      = "https://github.com/Minajeanne/tap_rated_new_beers.git"
   spec.license       = "MIT"
 
