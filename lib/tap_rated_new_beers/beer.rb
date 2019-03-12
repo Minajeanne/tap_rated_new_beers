@@ -1,16 +1,12 @@
-class TapRatedNewBeers::CLI
+class TapRatedNewBeers::Beer
 
-def call
+attr_accessor :name, :brewery, :style, :abv, :ratings, :score, :location, :url, :availability, :notes
 
+@@all = []
+
+def self.new_from_index_page(b)
+  self.new()
 end
-
-def start
-
-end 
-
-
-
-
 
 
 
