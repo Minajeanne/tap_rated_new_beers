@@ -1,5 +1,6 @@
 require 'pry'
 require 'nokogiri'
+require 'httparty'
 require 'open-uri'
 
 module TapRatedNewBeers
