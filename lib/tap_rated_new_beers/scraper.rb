@@ -1,30 +1,20 @@
 require_relative '../tap_rated_new_beers.rb'
 
 class TapRatedNewBeers::Scraper
+# add back self.
+  def get_index_page
+    Nokogiri::HTML(open("https://www.beeradvocate.com/lists/new/"))
+    end
 
-  def self.get__index_page(index_url)
-    index_url = Nokogiri::HTML(open("https://www.beeradvocate.com/lists/new/"))
-    beers = []
+    def scrape_beers
+      self.get_index_page.css("table")
        binding.pry
     end
 
-    def self.get_profile_page(profile_slug)
-      beer = {}
-      profile_page = Nokogiri::HTML(open(profile_slug))
-      links = profile_page.css()
+    def make_beers
+      scrape_beers.each do |beer|
+        TapRatedNewBeers::Beer.new_from_index_page(beer)
       end
-
-    # def scrape_beers
-    #   self.get_page.css()
-    #   beers = []
-    # end
-    #
-    # def make_beers
-    #   scrape_beers.each do |b|
-    #     TapRatedNewBeers::Beer.new_from_index_page(b)
-    #   end
-    # end
-    #
-
+    end
 end
-TapRatedNewBeers::Scraper.get_page
+TapRatedNewBeers::Scraper

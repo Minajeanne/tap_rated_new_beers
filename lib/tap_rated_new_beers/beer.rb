@@ -1,13 +1,17 @@
+require_relative '../tap_rated_new_beers.rb'
+
 class TapRatedNewBeers::Beer
 
 attr_accessor :name, :brewery, :style, :abv, :ratings, :score, :location, :url, :availability, :notes
 
 @@all = []
 
-  def self.new_from_index_page(b)
-    self.new(b.css("#ba-content").attribute("a href b").text,
-
-    )
+  def self.new_from_index_page(beer)
+    self.new(beer.css("table").css("tr")[2].css("td")[0].text,
+      beer.css("table").css("tr")[2].css("td")[1].css("a").first.text,
+      beer.css("table").css("tr")[2].css("td")[1].css("a").first.attributes["href"].value
+      )
+      binding.pry
   end
 
   def initialize(name=nil, brewery=nil, style=nil, abv=nil, ratings=nil, score=nil)
@@ -20,25 +24,25 @@ attr_accessor :name, :brewery, :style, :abv, :ratings, :score, :location, :url, 
     @@all << self
   end
 
-  def self.all
-    @@all
-  end
-
-  def location
-    @location ||=
-  end
-
-  def url
-    @url ||=
-  end
-
-  def availability
-    @availability ||=
-  end
-
-  def notes
-    @notes ||=
-  end
+  # def self.all
+  #   @@all
+  # end
+  #
+  # def location
+  #   @location ||=
+  # end
+  #
+  # def url
+  #   @url ||=
+  # end
+  #
+  # def availability
+  #   @availability ||=
+  # end
+  #
+  # def notes
+  #   @notes ||=
+  # end
 
   def self.find(rank)
     self.all(rank-1)

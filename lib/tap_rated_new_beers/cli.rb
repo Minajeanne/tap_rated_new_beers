@@ -1,21 +1,19 @@
+require_relative '../tap_rated_new_beers.rb'
+
 # CLI Controller
 class TapRatedNewBeers::CLI
 
   def call
     list_beers
-    select_beer
     exit_cli
   end
 
   def list_beers
     puts "Please wait while we brew your beers..."
     sleep(4)
+    puts ""
     puts "Top Rated Beers: New"
     # list beers here
-    puts "1...25"
-  end
-
-  def select_beer
     puts ""
     # input = nil
     # while input != 'exit'
@@ -34,7 +32,6 @@ class TapRatedNewBeers::CLI
           select_beer
         elsif input == "n"
           puts ""
-          puts "Happy Drinking!"
           exit_cli
         else
           puts ""
@@ -62,6 +59,4 @@ class TapRatedNewBeers::CLI
 
   end
 
-
-# Title Bar = (.mainContainer .titleBar).text
 end
