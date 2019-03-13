@@ -13,14 +13,13 @@ class TapRatedNewBeers::CLI
     sleep(4)
     puts ""
     puts "Top Rated Beers: New"
-    # list beers here
     puts ""
     # input = nil
     # while input != 'exit'
     puts "Select the rank number of the beer you'd like to sample or type 'exit':"
       input = gets.strip.downcase
-
-    beer = TapRatedNewBeers::Beer.find(input.to_i)
+    # list beers here
+    beer = TapRatedNewBeers::Beer.find #(input.to_i)
 
     print_beers(beer)
 
@@ -56,7 +55,22 @@ class TapRatedNewBeers::CLI
   end
 
   def print_beers(beer)
+     puts ""
+     puts "----------- #{beer.name} |_| #{beer.score} -----------"
+     puts ""
+     puts "Brewery:           #{beer.brewery}"
+     puts "Location:          #{beer.location}"
+     puts "Website:           #{beer.url}"
+     puts "Style:             #{beer.style}"
+     puts "ABV:               #{beer.abv}"
+     puts "Ratings:           #{beer.ratings}"
+     puts "Availability:      #{beer.availability}"
+     puts ""
+     puts "---------------Description--------------"
+     puts ""
+     puts "#{beer.notes}"
+     puts ""
+ end
 
-  end
 
 end

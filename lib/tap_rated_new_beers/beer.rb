@@ -24,10 +24,10 @@ attr_accessor :name, :brewery, :style, :abv, :ratings, :score, :location, :url, 
     @@all << self
   end
 
-  # def self.all
-  #   @@all
-  # end
-  #
+  def self.all
+    @@all
+  end
+
   # def location
   #   @location ||=
   # end
@@ -56,3 +56,5 @@ end
 # beer_rank = doc.css("table").css("tr")[2].css("td")[0].text
 # beer_name = doc.css("table").css("tr")[2].css("td")[1].css("a").first.text
 # beer_link = doc.css("table").css("tr")[2].css("td")[1].css("a").first.attributes["href"].value
+# __________2nd level
+# brewery = doc.css(".pageContentnoBorderRadiusBottom".css("info_box.break").css("a").x["href"].value
