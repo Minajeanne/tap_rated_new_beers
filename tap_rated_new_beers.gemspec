@@ -2,6 +2,7 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "tap_rated_new_beers/version"
+require 'pry'
 
 Gem::Specification.new do |spec|
   spec.name          = "tap_rated_new_beers"

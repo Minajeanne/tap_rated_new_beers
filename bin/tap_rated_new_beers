@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require '.lib/tap_rated_new_beers'
+
+TapRatedNewBeers::CLI.new.call
