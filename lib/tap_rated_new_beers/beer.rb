@@ -22,21 +22,21 @@ attr_accessor :name, :brewery, :style, :abv, :ratings, :score, :location, :url, 
     @@all
   end
 
-  def location
-    @location ||=
-  end
-
-  def url
-    @url ||=
-  end
-
-  def availability
-    @availability ||=
-  end
-
-  def notes
-    @notes ||=
-  end
+  # def location
+  #   @location ||=
+  # end
+  #
+  # def url
+  #   @url ||=
+  # end
+  #
+  # def availability
+  #   @availability ||=
+  # end
+  #
+  # def notes
+  #   @notes ||=
+  # end
 
   def doc
      @doc ||= Nokogiri::HTML(open(self.url))
