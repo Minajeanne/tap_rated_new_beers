@@ -47,6 +47,8 @@ attr_accessor :name, :brewery, :style, :abv, :ratings, :score, :location, :url, 
   def doc
      @doc ||= Nokogiri::HTML(open(self.url))
    end
-
-
 end
+
+# beer_rank = doc.css("table").css("tr")[2].css("td")[0].text
+# beer_name = doc.css("table").css("tr")[2].css("td")[1].css("a").first.text
+# beer_link = doc.css("table").css("tr")[2].css("td")[1].css("a").first.attributes["href"].value

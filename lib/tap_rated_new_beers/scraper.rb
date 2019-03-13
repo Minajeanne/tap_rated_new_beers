@@ -1,13 +1,19 @@
-require 'open-uri'
-require 'nokogiri'
-require 'pry'
+require_relative '../tap_rated_new_beers.rb'
 
 class TapRatedNewBeers::Scraper
 
-  def get_page
-      Nokogiri::HTML(open("https://www.beeradvocate.com/lists/new/"))
+  def self.get__index_page(index_url)
+    index_url = Nokogiri::HTML(open("https://www.beeradvocate.com/lists/new/"))
+    beers = []
+       binding.pry
     end
- binding.pry
+
+    def self.get_profile_page(profile_slug)
+      beer = {}
+      profile_page = Nokogiri::HTML(open(profile_slug))
+      links = profile_page.css()
+      end
+
     # def scrape_beers
     #   self.get_page.css()
     #   beers = []
@@ -21,3 +27,4 @@ class TapRatedNewBeers::Scraper
     #
 
 end
+TapRatedNewBeers::Scraper.get_page

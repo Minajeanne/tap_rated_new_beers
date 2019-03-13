@@ -19,7 +19,7 @@ class TapRatedNewBeers::CLI
     puts ""
     # input = nil
     # while input != 'exit'
-    puts "Select the number of the beer you'd like to sample or type 'exit':"
+    puts "Select the rank number of the beer you'd like to sample or type 'exit':"
       input = gets.strip.downcase
 
     beer = TapRatedNewBeers::Beer.find(input.to_i)
@@ -59,7 +59,7 @@ class TapRatedNewBeers::CLI
   end
 
   def print_beers(beer)
-    
+
   end
 
 
