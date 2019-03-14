@@ -1,5 +1,4 @@
-require_relative '../tap_rated_new_beers.rb'
-
+# require_relative '../tap_rated_new_beers.rb'
 # CLI Controller
 class TapRatedNewBeers::CLI
 
