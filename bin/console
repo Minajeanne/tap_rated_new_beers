@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require "tap_rated_new_beers"
+#require "bundler/setup"
+require_relative '../lib/tap_rated_new_beers.rb'
 
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
