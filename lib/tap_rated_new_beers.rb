@@ -1,6 +1,7 @@
 require 'pry'
 require 'nokogiri'
 require 'open-uri'
+require 'colorize'
 
 require_relative 'tap_rated_new_beers/version.rb'
 require_relative 'tap_rated_new_beers/cli.rb'

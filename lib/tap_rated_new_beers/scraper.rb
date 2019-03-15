@@ -8,7 +8,6 @@ class TapRatedNewBeers::Scraper
     table_row_nodes = self.index_url.css("table").css("tr")
     table_row_nodes = table_row_nodes.slice(2, 50)
 
-
     table_row_nodes.each do |beer_row|
       rank = beer_row.css("td")[0].text
       name = beer_row.css("td")[1].css("a").first.text
