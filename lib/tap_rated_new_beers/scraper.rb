@@ -17,7 +17,6 @@ class TapRatedNewBeers::Scraper
       temp_beer = TapRatedNewBeers::Beer.new(name)
       temp_beer.rank = rank
       temp_beer.beer_url = 'https://www.beeradvocate.com'+ beer_url
-      # binding.pry
     end
   end
 

@@ -58,7 +58,9 @@ class TapRatedNewBeers::CLI
 
  def select_another
    puts "Would you like to sample another beer? Y or N"
-   input = gets.strip
+   input = nil
+   if input != 'exit'
+     input = gets.strip
      if input == "y"
        display_list
      elsif input == "n"
@@ -67,6 +69,9 @@ class TapRatedNewBeers::CLI
      else
        puts ""
        puts "Have you been drinking? Please try again."
+       puts ""
+       display_list
+     end
     end
   end
 
@@ -75,3 +80,4 @@ class TapRatedNewBeers::CLI
   end
 
 end
+# if you add this to your beer class …. (stole this from avi vid) … def open_in_browser     system("open '#{url}'")   end you can call def open_in_browser on your individual beer url
