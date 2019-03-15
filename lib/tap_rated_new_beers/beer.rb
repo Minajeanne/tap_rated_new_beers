@@ -12,9 +12,8 @@ attr_accessor :name, :rank, :beer_url, :brewery, :style, :abv, :ratings, :score,
     @@all
   end
 
-  # def open_in_browser (beer)
-  #   puts "hitting this method"
-  #   # system("open '#{beer.brewery_url}'") 
-  # end
+  def open_in_browser
+    system("open '#{brewery_url}'")
+  end
 end
 # end of Class

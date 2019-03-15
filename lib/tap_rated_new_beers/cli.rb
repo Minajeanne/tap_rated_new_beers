@@ -3,11 +3,10 @@ class TapRatedNewBeers::CLI
   def call
     TapRatedNewBeers::Scraper.scrape_index_page
     list_beers
-    # exit_cli
   end
 
   def list_beers
-    puts "Please wait while we brew your beers...".red.bold
+    puts "Please wait while we brew your beers...".blue.bold
     sleep(4)
     puts ""
     puts "Top Rated Beers: New".red.bold
@@ -23,10 +22,8 @@ class TapRatedNewBeers::CLI
   end
 
   def select_beer
-    puts "Select the rank number of the beer you'd like to sample or type 'exit':".red.bold
+    puts "Select the rank number of the beer you'd like to sample:".red.bold
       input = gets.strip
-
-      exit_cli if input.downcase == "exit"
 
       beer = TapRatedNewBeers::Beer.all.find do |beer|
         beer.rank == input
@@ -48,34 +45,27 @@ class TapRatedNewBeers::CLI
      puts "#{beer.abv}".blue.bold
      puts "Ratings:                 #{beer.ratings}".blue.bold
      puts "#{beer.availability}".blue.bold
-     puts "::::::::::::::: Description :::::::::::::::".blue.bold
+     puts "::::::::::::::: Description ::::::::::::::::::".blue.bold
      puts ""
      puts "#{beer.notes}".blue.bold
      puts ""
-     puts ":::::::::::::::::::::::::::::::::::::::::::".blue.bold
-     # visit_brewery
-     select_another
- end
+     puts "::::::::::::::::::::::::::::::::::::::::::::::".blue.bold
+     puts "Would you like to visit this brewery's website? Y or N".red.bold
+     input = gets.strip.downcase
 
- # def visit_brewery
- #   puts "Would you like to visit this brewery's website? Y or N".red.bold
- #   input = gets.strip.downcase
- #
- #  loop do
- #
- #     case input
- #     when "n"
- #       select_another
- #     when "y"
- #       open_in_browser
- #     else
- #       puts ""
- #       puts "Have you been drinking? Please try again.".red.bold
- #       puts ""
- #        display_list
- #      end
- #    end
- #  end
+     case input
+     when "y"
+       beer.open_in_browser
+       select_another
+     when "n"
+       select_another
+     else
+       puts ""
+       puts "Have you been drinking? Please try again.".red.bold
+       puts ""
+       display_list
+      end
+ end
 
  def select_another
    puts "Would you like to sample another beer? Y or N".red.bold
@@ -92,11 +82,6 @@ class TapRatedNewBeers::CLI
      puts ""
       display_list
     end
-  end
-
-  def open_in_browser 
-    puts "hitting this method".red.bold
-    # system("open '#{beer.brewery_url}'") 
   end
 
   def exit_cli
