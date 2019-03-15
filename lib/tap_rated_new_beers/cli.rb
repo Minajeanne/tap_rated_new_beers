@@ -3,7 +3,7 @@ class TapRatedNewBeers::CLI
   def call
     TapRatedNewBeers::Scraper.scrape_index_page
     list_beers
-    exit_cli
+    # exit_cli
   end
 
   def list_beers
@@ -24,13 +24,13 @@ class TapRatedNewBeers::CLI
 
   def select_beer
     puts "Select the rank number of the beer you'd like to sample or type 'exit':"
-    input = nil
-    #while input != 'exit'
+    # input = nil
+    # while input != 'exit'
       input = gets.strip
       beer = TapRatedNewBeers::Beer.all.find do |beer|
         beer.rank == input
       end
-    #end
+    # end
     TapRatedNewBeers::Scraper.scrape_beer_page(beer)
     print_beer_info(beer)
 
@@ -64,15 +64,17 @@ class TapRatedNewBeers::CLI
 
  def select_another
    puts "Would you like to sample another beer? Y or N"
+   input = gets.strip
      if input == "y"
        display_list
      elsif input == "n"
        puts ""
        exit_cli
-     else
+     else input != "y" || "n"
        puts ""
-       puts "Have you been drinking? Please try again."
+       puts ""
        display_list
+       puts "Have you been drinking? Please try again."
     end
   end
 
