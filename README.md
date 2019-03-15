@@ -4,9 +4,9 @@ This Ruby Gem provides a CLI to view <a href="https://www.beeradvocate.com/lists
 
 ## Installation
 
-You can install this gem by running the following command in your terminal:
+You can install this gem by running `gem install tap_rated_new_beers` in your terminal:
 
-    `gem install tap_rated_new_beers`
+ 
 
 ## Usage
 
