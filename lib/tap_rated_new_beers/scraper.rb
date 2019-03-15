@@ -1,5 +1,3 @@
-# require 'pry'
-require_relative '../tap_rated_new_beers.rb'
 class TapRatedNewBeers::Scraper
 
   def self.index_url
@@ -18,28 +16,36 @@ class TapRatedNewBeers::Scraper
 
       temp_beer = TapRatedNewBeers::Beer.new(name)
       temp_beer.rank = rank
-      temp_beer.beer_url = beer_url
+      temp_beer.beer_url = 'https://www.beeradvocate.com'+ beer_url
     end
   end
 
-  def self.scrape_beer_page
-    TapRatedNewBeers::Beer.all.each do |beer|
+  def self.scrape_beer_page(beer)
+    # binding.pry
     beer_page = Nokogiri::HTML(open(beer.beer_url))
 
-    beer_page.css(span.BAscore_big span.ba-ravg).text
-    binding.pry
-    end
+      beer.score = beer_page.css("div#score_box").css("span.BAscore_big").css("span.ba-ravg").text
+      beer.ratings = beer_page.css("div#score_box").css("span.ba-ratings").text
+      beer.style = beer_page.css("div#info_box.break").css("a")[4].text
+      beer.brewery = beer_page.css("div#info_box.break").css("a")[0].text
+      beer.location = beer_page.css("div#info_box.break").css("a")[1].text + ", " + beer_page.css("div#info_box.break").css("a")[2].text
+      beer.brewery_url = beer_page.css("div#info_box.break").css("a")[3].attributes["href"].value
+      array = beer_page.css("div#info_box.break").text.split("\n\n")
+      array.find do |phrase|
+        if phrase.include?("%")
+          beer.abv = phrase
+        elsif phrase.include?("Availability")
+          beer.availability = phrase
+        end
+      end
+      beer.notes = array.last
+       # binding.pry
   end
 
-  # def make_beers
-  #   scrape_beers.each do |beer|
-  #     TapRatedNewBeers::Beer.new_from_index_page(beer)
-  #   end
-  # end
-
-  # def doc
-  #    @doc ||= Nokogiri::HTML(open(self.url))
-  # end
-
 end
-# TapRatedNewBeers::Scraper.scrape_index_page
+# end of Class
+
+
+# def doc
+#    @doc ||= Nokogiri::HTML(open(self.url))
+# end
