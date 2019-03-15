@@ -24,13 +24,21 @@ class TapRatedNewBeers::CLI
   def select_beer
     puts "Select the rank number of the beer you'd like to sample:".red.bold
       input = gets.strip
+        if input.to_i.between?(1, TapRatedNewBeers::Beer.all.length)
 
-      beer = TapRatedNewBeers::Beer.all.find do |beer|
-        beer.rank == input
-      end
+          beer = TapRatedNewBeers::Beer.all.find do |beer|
+            beer.rank == input
+          end
 
-    TapRatedNewBeers::Scraper.scrape_beer_page(beer)
-    print_beer_info(beer)
+          TapRatedNewBeers::Scraper.scrape_beer_page(beer)
+          print_beer_info(beer)
+
+        else
+        puts ""
+        puts "Have you been drinking? Please try again.".red.bold
+        puts ""
+        display_list
+        end
   end
 
 
