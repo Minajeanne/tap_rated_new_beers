@@ -17,11 +17,11 @@ class TapRatedNewBeers::Scraper
       temp_beer = TapRatedNewBeers::Beer.new(name)
       temp_beer.rank = rank
       temp_beer.beer_url = 'https://www.beeradvocate.com'+ beer_url
+      # binding.pry
     end
   end
 
   def self.scrape_beer_page(beer)
-    # binding.pry
     beer_page = Nokogiri::HTML(open(beer.beer_url))
 
       beer.score = beer_page.css("div#score_box").css("span.BAscore_big").css("span.ba-ravg").text
@@ -39,13 +39,7 @@ class TapRatedNewBeers::Scraper
         end
       end
       beer.notes = array.last
-       # binding.pry
   end
 
 end
 # end of Class
-
-
-# def doc
-#    @doc ||= Nokogiri::HTML(open(self.url))
-# end
