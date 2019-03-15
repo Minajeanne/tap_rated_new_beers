@@ -94,19 +94,6 @@ class TapRatedNewBeers::CLI
     end
   end
 
-  #
-  #  if input == "y"
-  #    display_list
-  #  elsif input == "n" || "exit"
-  #    exit_cli
-  #  else
-  #    puts ""
-  #    puts "Have you been drinking? Please try again.".red.bold
-  #    puts ""
-  #    display_list
-  #   end
-  # end
-
   def open_in_browser 
     puts "hitting this method".red.bold
     # system("open '#{beer.brewery_url}'") 
@@ -116,5 +103,4 @@ class TapRatedNewBeers::CLI
     puts "Happy Drinking!".red.bold
   end
 end
-
 # end of Class
