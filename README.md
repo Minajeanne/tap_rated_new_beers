@@ -10,7 +10,7 @@ You can install this gem by running `gem install tap_rated_new_beers` in your te
 
 ## Usage
 
-Run `tap_rated_new_beers` after installing the gem.
+Run `bin/tap_rated_new_beers` after installing the gem.
      
 
 ## Development
