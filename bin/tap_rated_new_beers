@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 require_relative '../lib/tap_rated_new_beers.rb'
-# require 'bundler/setup'
+require 'bundler/setup'
 
 TapRatedNewBeers::CLI.new.call
