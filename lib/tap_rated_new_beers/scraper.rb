@@ -20,6 +20,7 @@ class TapRatedNewBeers::Scraper
   end
 
   def self.scrape_beer_page(beer)
+    #self => Scraper
     beer_page = Nokogiri::HTML(open(beer.beer_url))
 
       beer.score = beer_page.css("div#score_box").css("span.BAscore_big").css("span.ba-ravg").text
@@ -29,7 +30,7 @@ class TapRatedNewBeers::Scraper
       beer.location = beer_page.css("div#info_box.break").css("a")[1].text + ", " + beer_page.css("div#info_box.break").css("a")[2].text
       beer.brewery_url = beer_page.css("div#info_box.break").css("a")[3].attributes["href"].value
       array = beer_page.css("div#info_box.break").text.split("\n\n")
-      array.find do |phrase|
+      array.each do |phrase|
         if phrase.include?("%")
           beer.abv = phrase
         elsif phrase.include?("Availability")

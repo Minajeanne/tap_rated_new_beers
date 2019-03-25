@@ -1,6 +1,7 @@
 class TapRatedNewBeers::CLI
 
   def call
+    #self =>
     TapRatedNewBeers::Scraper.scrape_index_page
     list_beers
   end
