@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tap_rated_new_beers (0.2.0)
+    tap_rated_new_beers (0.3.0)
 
 GEM
   remote: https://rubygems.org/
