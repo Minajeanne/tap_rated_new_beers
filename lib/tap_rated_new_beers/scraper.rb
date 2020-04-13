@@ -15,7 +15,7 @@ class TapRatedNewBeers::Scraper
 
       temp_beer = TapRatedNewBeers::Beer.new(name)
       temp_beer.rank = rank
-      temp_beer.beer_url = "https://www.beeradvocate.com"+ beer_url
+      temp_beer.beer_url = "https://www.beeradvocate.com" + beer_url
     end
   end
 
@@ -23,21 +23,24 @@ class TapRatedNewBeers::Scraper
     #self => Scraper
     beer_page = Nokogiri::HTML(open(beer.beer_url))
 
-      beer.score = beer_page.css("div#score_box").css("span.BAscore_big").css("span.ba-ravg").text
-      beer.ratings = beer_page.css("div#score_box").css("span.ba-ratings").text
-      beer.style = beer_page.css("div#info_box.break").css("a")[4].text
-      beer.brewery = beer_page.css("div#info_box.break").css("a")[0].text
-      beer.location = beer_page.css("div#info_box.break").css("a")[1].text + ", " + beer_page.css("div#info_box.break").css("a")[2].text
-      beer.brewery_url = beer_page.css("div#info_box.break").css("a")[3].attributes["href"].value
-      array = beer_page.css("div#info_box.break").text.split("\n\n")
-      array.each do |phrase|
-        if phrase.include?("%")
-          beer.abv = phrase
-        elsif phrase.include?("Availability")
-          beer.availability = phrase
+      beer.score = beer_page.css("div#info_box").css("dl.beerstats").css("dd.beerstats").css("span.ba-score.Tooltip").text
+      beer.ratings = beer_page.css("div#info_box").css("dl.beerstats").css("dd.beerstats").css("span.ba-ratings.Tooltip").text
+      beer.style = beer_page.css("div#info_box").css("dd.beerstats").css("a.Tooltip").css("b").text
+      beer.abv = beer_page.css("div#info_box").css("dl.beerstats").css("dd.beerstats")[1].css("span.Tooltip b").text
+      beer.availability = beer_page.css("div#info_box").css("dl.beerstats").css("dd.beerstats").css("span.Tooltip")[6].text
+      beer.brewery = beer_page.css("div#info_box").css("dl.beerstats").css("dd.beerstats").css("a.Tooltip")[3].text
+      beer.location = beer_page.css("div#info_box").css("dd.beerstats").css("a")[4].text + ", " + beer_page.css("div#info_box").css("dd.beerstats").css("a")[5].text
+      beer.brewery_url = beer_page.css("div#info_box").css("dl.beerstats").css("dd.beerstats").css("a.Tooltip")[3].attributes["href"].value
+      # array = beer_page.css("div#info_box").text.split("\n\n")
+      beer_page_contents = beer_page.css("div#ba-content").css("div div text *").text.split("\n\n")
+
+      beer_page_contents.each do |content|
+        if content.include?("Notes:")
+          beer.notes = content
         end
+      binding.pry
       end
-      beer.notes = array.last
+      # beer.notes = array.last
   end
 end
 # end of Class

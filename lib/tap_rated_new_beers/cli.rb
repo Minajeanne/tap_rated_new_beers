@@ -51,9 +51,9 @@ class TapRatedNewBeers::CLI
      puts "Location:                #{beer.location}".blue.bold
      puts "Website:                 #{beer.brewery_url}".blue.bold
      puts "Style:                   #{beer.style}".blue.bold
-     puts "#{beer.abv}".blue.bold
+     puts "ABV:                     #{beer.abv}".blue.bold
      puts "Ratings:                 #{beer.ratings}".blue.bold
-     puts "#{beer.availability}".blue.bold
+     puts "Availability:            #{beer.availability}".blue.bold
      puts "::::::::::::::: Description ::::::::::::::::::".blue.bold
      puts ""
      puts "#{beer.notes}".blue.bold
