@@ -63,16 +63,16 @@ class TapRatedNewBeers::CLI
      input = gets.strip.downcase
 
      case input
-     when "y"
-       beer.open_in_browser
-       select_another
-     when "n"
-       select_another
-     else
-       puts ""
-       puts "Have you been drinking? Please try again.".red.bold
-       puts ""
-       display_list
+       when "y"
+         beer.open_in_browser
+         select_another
+       when "n"
+         select_another
+       else
+         puts ""
+         puts "Have you been drinking? Please try again.".red.bold
+         puts ""
+         display_list
       end
  end
 
