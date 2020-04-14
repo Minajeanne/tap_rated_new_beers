@@ -17,12 +17,6 @@ attr_accessor :name, :rank, :beer_url, :brewery, :style, :abv, :ratings, :score,
     system("open '#{brewery_url}'")
   end
 end
-# end of Class
-
-# x= [1,2,3]
-# x.map {|num| num.to_s + "!"}
-# # => ["1!","2!", "3!"]
-
 
 z= 10000
 

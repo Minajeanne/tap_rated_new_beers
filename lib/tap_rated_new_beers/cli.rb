@@ -49,7 +49,7 @@ class TapRatedNewBeers::CLI
      puts ""
      puts "Brewery:                 #{beer.brewery}".blue.bold
      puts "Location:                #{beer.location}".blue.bold
-     puts "Website:                 #{beer.brewery_url}".blue.bold
+     puts "More Info:               #{beer.brewery_url}".blue.bold
      puts "Style:                   #{beer.style}".blue.bold
      puts "ABV:                     #{beer.abv}".blue.bold
      puts "Ratings:                 #{beer.ratings}".blue.bold
@@ -59,7 +59,7 @@ class TapRatedNewBeers::CLI
      puts "#{beer.notes}".blue.bold
      puts ""
      puts "::::::::::::::::::::::::::::::::::::::::::::::".blue.bold
-     puts "Would you like to visit this brewery's website? Y or N".red.bold
+     puts "Would you like more info about this brewery? Y or N".red.bold
      input = gets.strip.downcase
 
      case input

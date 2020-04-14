@@ -30,17 +30,18 @@ class TapRatedNewBeers::Scraper
       beer.availability = beer_page.css("div#info_box").css("dl.beerstats").css("dd.beerstats").css("span.Tooltip")[6].text
       beer.brewery = beer_page.css("div#info_box").css("dl.beerstats").css("dd.beerstats").css("a.Tooltip")[3].text
       beer.location = beer_page.css("div#info_box").css("dd.beerstats").css("a")[4].text + ", " + beer_page.css("div#info_box").css("dd.beerstats").css("a")[5].text
-      beer.brewery_url = beer_page.css("div#info_box").css("dl.beerstats").css("dd.beerstats").css("a.Tooltip")[3].attributes["href"].value
-      # array = beer_page.css("div#info_box").text.split("\n\n")
-      beer_page_contents = beer_page.css("div#ba-content").css("div div text *").text.split("\n\n")
+      beer.brewery_url = "https://www.beeradvocate.com" + beer_page.css("div#info_box").css("dl.beerstats").css("dd.beerstats").css("a.Tooltip")[3].attributes["href"].value
 
-      beer_page_contents.each do |content|
-        if content.include?("Notes:")
-          beer.notes = content
+      beer_page_contents = beer_page.css("div#ba-content div#text").text.split("\n\n\t")
+      beer_page_contents.map do |content|
+        # content.split("\t\n")
+        if content.include?("Notes: ")
+          note = content.split("\n\n")
+          beer.notes = note[0]
+          binding.pry
         end
-      binding.pry
       end
-      # beer.notes = array.last
+    beer.notes
+    binding.pry
   end
 end
-# end of Class
