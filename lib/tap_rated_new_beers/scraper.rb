@@ -31,18 +31,6 @@ class TapRatedNewBeers::Scraper
       beer.brewery = beer_page.css("div#info_box").css("dl.beerstats").css("dd.beerstats").css("a.Tooltip")[3].text
       beer.location = beer_page.css("div#info_box").css("dd.beerstats").css("a")[4].text + ", " + beer_page.css("div#info_box").css("dd.beerstats").css("a")[5].text
       beer.brewery_url = "https://www.beeradvocate.com" + beer_page.css("div#info_box").css("dl.beerstats").css("dd.beerstats").css("a.Tooltip")[3].attributes["href"].value
-
-      beer_page_contents = beer_page.css("div#ba-content div div").text.split("\n\n\t")
-      beer_page_contents[2] = beer_notes_array
-      beer_notes_array.map do |content|
-        # content.split("\t\n")
-        if content.include?("Notes: ")
-          note = content.text
-          beer.notes = note
-          binding.pry
-        end
-      end
-    beer.notes
-    binding.pry
+      beer.notes = beer_page.css('div#ba-content div div:contains("Notes:")').text.strip
   end
 end
