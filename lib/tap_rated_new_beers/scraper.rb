@@ -6,7 +6,7 @@ class TapRatedNewBeers::Scraper
 
   def self.scrape_index_page
     table_row_nodes = self.index_url.css("table").css("tr")
-    table_row_nodes = table_row_nodes.slice(2, 50)
+    table_row_nodes = table_row_nodes.slice(1, 50)
 
     table_row_nodes.each do |beer_row|
       rank = beer_row.css("td")[0].text
@@ -32,12 +32,13 @@ class TapRatedNewBeers::Scraper
       beer.location = beer_page.css("div#info_box").css("dd.beerstats").css("a")[4].text + ", " + beer_page.css("div#info_box").css("dd.beerstats").css("a")[5].text
       beer.brewery_url = "https://www.beeradvocate.com" + beer_page.css("div#info_box").css("dl.beerstats").css("dd.beerstats").css("a.Tooltip")[3].attributes["href"].value
 
-      beer_page_contents = beer_page.css("div#ba-content div#text").text.split("\n\n\t")
-      beer_page_contents.map do |content|
+      beer_page_contents = beer_page.css("div#ba-content div div").text.split("\n\n\t")
+      beer_page_contents[2] = beer_notes_array
+      beer_notes_array.map do |content|
         # content.split("\t\n")
         if content.include?("Notes: ")
-          note = content.split("\n\n")
-          beer.notes = note[0]
+          note = content.text
+          beer.notes = note
           binding.pry
         end
       end
