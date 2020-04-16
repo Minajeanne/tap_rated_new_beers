@@ -45,7 +45,7 @@ class TapRatedNewBeers::CLI
 
   def print_beer_info(beer)
      puts ""
-     puts "::::::::::: #{beer.name} |_| Score: #{beer.score}/5 :::::::::::".blue.bold
+     puts "::::::::::: #{beer.name} |_| Score: #{beer.score} :::::::::::".blue.bold
      puts ""
      puts "Brewery:                 #{beer.brewery}".blue.bold
      puts "Location:                #{beer.location}".blue.bold
@@ -59,7 +59,7 @@ class TapRatedNewBeers::CLI
      puts "#{beer.notes}".blue.bold
      puts ""
      puts "::::::::::::::::::::::::::::::::::::::::::::::".blue.bold
-     puts "Would you like more info about this brewery? Y or N".red.bold
+     puts "Would you like to learn more info about this brewery's offerings? Y or N".red.bold
      input = gets.strip.downcase
 
      case input
