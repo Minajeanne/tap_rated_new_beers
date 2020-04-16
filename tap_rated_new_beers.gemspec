@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Minajeanne"]
   spec.email         = ["albrown07@mac.com"]
 
-  spec.summary       = %q{"A ruby gem to view Beeradvocate's top 50 beers"}
+  spec.summary       = %q{"A ruby gem to view Beeradvocate's top 50 new beers"}
   spec.description   = %q{"A ruby gem to view Beeradvocate's top 50 beers with the option to learn more about each beer and directly access the brewery's website"}
   spec.homepage      = "https://github.com/Minajeanne/tap_rated_new_beers.git"
   spec.license       = "MIT"
