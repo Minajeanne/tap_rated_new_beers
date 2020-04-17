@@ -59,7 +59,7 @@ class TapRatedNewBeers::CLI
      puts "#{beer.notes}".blue.bold
      puts ""
      puts "::::::::::::::::::::::::::::::::::::::::::::::".blue.bold
-     puts "Would you like to learn more info about this brewery's offerings? Y or N".red.bold
+     puts "Would you like to learn more about this brewery's offerings? Y or N".red.bold
      input = gets.strip.downcase
 
      case input
